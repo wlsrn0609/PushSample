@@ -15,7 +15,33 @@
 		589C5ADB2109B2430007561A /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589C5AD82109B2430007561A /* Extension.swift */; };
 		589C5ADC2109B2430007561A /* Define.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589C5AD92109B2430007561A /* Define.swift */; };
 		589C5ADD2109B2430007561A /* NotiCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589C5ADA2109B2430007561A /* NotiCenter.swift */; };
+		589C5AE62109C0420007561A /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589C5AE52109C0420007561A /* NotificationService.swift */; };
+		589C5AEA2109C0420007561A /* PushSampleNotificationService.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 589C5AE32109C0420007561A /* PushSampleNotificationService.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		589C5AE82109C0420007561A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 589C5ABB2109B2290007561A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 589C5AE22109C0420007561A;
+			remoteInfo = PushSampleNotificationService;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		589C5AEE2109C0420007561A /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				589C5AEA2109C0420007561A /* PushSampleNotificationService.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		589C5AC32109B2290007561A /* PushSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PushSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -29,10 +55,20 @@
 		589C5AD92109B2430007561A /* Define.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Define.swift; sourceTree = "<group>"; };
 		589C5ADA2109B2430007561A /* NotiCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotiCenter.swift; sourceTree = "<group>"; };
 		589C5ADE2109B4220007561A /* PushSample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PushSample.entitlements; sourceTree = "<group>"; };
+		589C5AE32109C0420007561A /* PushSampleNotificationService.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PushSampleNotificationService.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		589C5AE52109C0420007561A /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		589C5AE72109C0420007561A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		589C5AC02109B2290007561A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		589C5AE02109C0420007561A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -46,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				589C5AC52109B2290007561A /* PushSample */,
+				589C5AE42109C0420007561A /* PushSampleNotificationService */,
 				589C5AC42109B2290007561A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				589C5AC32109B2290007561A /* PushSample.app */,
+				589C5AE32109C0420007561A /* PushSampleNotificationService.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -75,6 +113,15 @@
 			path = PushSample;
 			sourceTree = "<group>";
 		};
+		589C5AE42109C0420007561A /* PushSampleNotificationService */ = {
+			isa = PBXGroup;
+			children = (
+				589C5AE52109C0420007561A /* NotificationService.swift */,
+				589C5AE72109C0420007561A /* Info.plist */,
+			);
+			path = PushSampleNotificationService;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -85,15 +132,34 @@
 				589C5ABF2109B2290007561A /* Sources */,
 				589C5AC02109B2290007561A /* Frameworks */,
 				589C5AC12109B2290007561A /* Resources */,
+				589C5AEE2109C0420007561A /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				589C5AE92109C0420007561A /* PBXTargetDependency */,
 			);
 			name = PushSample;
 			productName = PushSample;
 			productReference = 589C5AC32109B2290007561A /* PushSample.app */;
 			productType = "com.apple.product-type.application";
+		};
+		589C5AE22109C0420007561A /* PushSampleNotificationService */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 589C5AEB2109C0420007561A /* Build configuration list for PBXNativeTarget "PushSampleNotificationService" */;
+			buildPhases = (
+				589C5ADF2109C0420007561A /* Sources */,
+				589C5AE02109C0420007561A /* Frameworks */,
+				589C5AE12109C0420007561A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PushSampleNotificationService;
+			productName = PushSampleNotificationService;
+			productReference = 589C5AE32109C0420007561A /* PushSampleNotificationService.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -116,6 +182,9 @@
 							};
 						};
 					};
+					589C5AE22109C0420007561A = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
 				};
 			};
 			buildConfigurationList = 589C5ABE2109B2290007561A /* Build configuration list for PBXProject "PushSample" */;
@@ -132,6 +201,7 @@
 			projectRoot = "";
 			targets = (
 				589C5AC22109B2290007561A /* PushSample */,
+				589C5AE22109C0420007561A /* PushSampleNotificationService */,
 			);
 		};
 /* End PBXProject section */
@@ -144,6 +214,13 @@
 				589C5AD12109B22A0007561A /* LaunchScreen.storyboard in Resources */,
 				589C5ACE2109B22A0007561A /* Assets.xcassets in Resources */,
 				589C5ACC2109B2290007561A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		589C5AE12109C0420007561A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,7 +239,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		589C5ADF2109C0420007561A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				589C5AE62109C0420007561A /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		589C5AE92109C0420007561A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 589C5AE22109C0420007561A /* PushSampleNotificationService */;
+			targetProxy = 589C5AE82109C0420007561A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		589C5ACA2109B2290007561A /* Main.storyboard */ = {
@@ -301,6 +394,7 @@
 		589C5AD62109B22A0007561A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = PushSample/PushSample.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -320,6 +414,7 @@
 		589C5AD72109B22A0007561A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = PushSample/PushSample.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -331,6 +426,44 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = wlsrn0609.DevTest001;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		589C5AEC2109C0420007561A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CZKH475M2R;
+				INFOPLIST_FILE = PushSampleNotificationService/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = wlsrn0609.DevTest001.PushSampleNotificationService;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		589C5AED2109C0420007561A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CZKH475M2R;
+				INFOPLIST_FILE = PushSampleNotificationService/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = wlsrn0609.DevTest001.PushSampleNotificationService;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -353,6 +486,15 @@
 			buildConfigurations = (
 				589C5AD62109B22A0007561A /* Debug */,
 				589C5AD72109B22A0007561A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		589C5AEB2109C0420007561A /* Build configuration list for PBXNativeTarget "PushSampleNotificationService" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				589C5AEC2109C0420007561A /* Debug */,
+				589C5AED2109C0420007561A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

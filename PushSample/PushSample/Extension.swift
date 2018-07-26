@@ -110,8 +110,6 @@ extension UIImage {
         return fileURL
     }
     
-    
-    
     class func readImageFromeDocuments(fileName : String) -> UIImage{
         
         let documentPathURL : URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last!
