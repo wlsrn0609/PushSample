@@ -51,10 +51,10 @@ class NotiCenter: NSObject, UNUserNotificationCenterDelegate {
         content.attachments = [attachment]
         
         //원하는 시간 컴포넌트 추가
-        var newTime = time
-        newTime = Calendar.current.date(bySetting: .hour, value: 0, of: newTime)!
-        newTime = Calendar.current.date(bySetting: .minute, value: 0, of: newTime)!
-        newTime = Calendar.current.date(bySetting: .second, value: 0, of: newTime)!
+//        var newTime = time
+//        newTime = Calendar.current.date(bySetting: .hour, value: 0, of: newTime)!
+//        newTime = Calendar.current.date(bySetting: .minute, value: 0, of: newTime)!
+//        newTime = Calendar.current.date(bySetting: .second, value: 0, of: newTime)!
 
         //해당하는 Date 객체와 어떤거가 맞을때 알람이 울릴지 결정
         let triggerDate = Calendar.current.dateComponents([.hour,.minute,.second], from: time)

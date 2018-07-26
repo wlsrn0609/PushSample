@@ -14,18 +14,26 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let targetImage = #imageLiteral(resourceName: "kakao")
-        let imageName = "kakao"
+        let button = UIButton(frame: CGRect(x: 10, y: STATUS_BAR_HEIGHT + 10, width: 50, height: 50))
+        button.backgroundColor = UIColor.randomColor()
+        button.addTarget(event: .touchUpInside) { (button) in
+            print("buttonPressed")
+            NotiCenter.shared.addAlram(time: Date(timeIntervalSinceNow: 60), complete: { (success : Bool) in
+                if !success { print("failed")}
+                else { print("success") }
+            })
+        }
+        self.view.addSubview(button)
         
-        //save
-        let _ = targetImage.saveImageToDocuments(fileName: imageName)
         
-        //read
-//        let afterImage = UIImage.readImageFromeDocuments(fileName: imageName)
-        let afterImage = UIImage(documentFileName: imageName)
         
-        self.view.addSubview(UIImageView(image: afterImage))
         
+        let button2 = UIButton(frame: CGRect(x: 10, y: button.frame.maxY + 20, width: 50, height: 50))
+        button2.backgroundColor = UIColor.randomColor()
+        button2.addTarget(event: .touchUpInside) { (button) in
+            NotiCenter.shared.readAlram(identifiers: "sampleID")
+        }
+        self.view.addSubview(button2)
     }
 
     override func didReceiveMemoryWarning() {
