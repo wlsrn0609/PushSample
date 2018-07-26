@@ -45,6 +45,7 @@ class NotiCenter: NSObject, UNUserNotificationCenterDelegate {
         content.body = "body"
         content.sound = UNNotificationSound.default()
 
+        
         //이미지를 추가하길 원한다면
         let imageURL = #imageLiteral(resourceName: "kakao").saveImageToDocuments(fileName: "kakao")
         let attachment = try! UNNotificationAttachment(identifier: "kakao", url: imageURL, options: nil)
