@@ -58,6 +58,7 @@
 		589C5AE32109C0420007561A /* PushSampleNotificationService.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PushSampleNotificationService.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		589C5AE52109C0420007561A /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		589C5AE72109C0420007561A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		589C5AEF2109C6B30007561A /* PushSampleNotificationService.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PushSampleNotificationService.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +117,7 @@
 		589C5AE42109C0420007561A /* PushSampleNotificationService */ = {
 			isa = PBXGroup;
 			children = (
+				589C5AEF2109C6B30007561A /* PushSampleNotificationService.entitlements */,
 				589C5AE52109C0420007561A /* NotificationService.swift */,
 				589C5AE72109C0420007561A /* Info.plist */,
 			);
@@ -184,6 +186,11 @@
 					};
 					589C5AE22109C0420007561A = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -434,6 +441,7 @@
 		589C5AEC2109C0420007561A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = PushSampleNotificationService/PushSampleNotificationService.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CZKH475M2R;
 				INFOPLIST_FILE = PushSampleNotificationService/Info.plist;
@@ -453,6 +461,7 @@
 		589C5AED2109C0420007561A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = PushSampleNotificationService/PushSampleNotificationService.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CZKH475M2R;
 				INFOPLIST_FILE = PushSampleNotificationService/Info.plist;

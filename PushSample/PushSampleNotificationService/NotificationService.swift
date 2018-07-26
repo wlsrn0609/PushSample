@@ -12,8 +12,17 @@ import UIKit
 
 //samplePayload
 /*
- {"aps":{"alert":"Testing.. (9)","badge":1,"sound":"default"},"imageURL":"https://i.ytimg.com/vi/7qkbRYM7YP8/maxresdefault.jpg"}
- */
+ {
+ "aps" : {
+ "alert" : {
+ "title" : "타이틀",
+ "subtitle" : "서브타이틀",
+ "body" : "바디"
+ },
+ "mutable-content": 1
+ },
+ "imageURL": "https://i.ytimg.com/vi/7qkbRYM7YP8/maxresdefault.jpg"
+ } */
 
 class NotificationService: UNNotificationServiceExtension {
 
