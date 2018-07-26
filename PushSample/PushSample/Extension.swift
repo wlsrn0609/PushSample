@@ -94,6 +94,47 @@ extension UIImageView {
 }
 
 
+extension UIImage {
+    //이미지가 돌아가는 문제 -> png->jpg로 해결
+    func saveImageToDocuments(fileName : String) -> URL{
+        
+        // 사진 저장
+        let documentPathURL : URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last!
+        let fileName : String     = String(format: "%@.png", fileName)
+        let fileURL : URL         = documentPathURL.appendingPathComponent(fileName)
+        
+        let pngData  : Data = UIImageJPEGRepresentation(self, 1)!
+        
+        try? pngData.write(to: fileURL, options: [.atomic])
+        
+        return fileURL
+    }
+    
+    
+    
+    class func readImageFromeDocuments(fileName : String) -> UIImage{
+        
+        let documentPathURL : URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last!
+        let fileName : String     = String(format: "%@.png", fileName)
+        let fileURL : URL         = documentPathURL.appendingPathComponent(fileName)
+        
+        let imageData = try! Data(contentsOf: fileURL)
+        
+        return UIImage(data: imageData)!
+    }
+    
+    convenience init(documentFileName fileName : String) {
+        
+        let documentPathURL : URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last!
+        let fileName : String     = String(format: "%@.png", fileName)
+        let fileURL : URL         = documentPathURL.appendingPathComponent(fileName)
+        
+        let imageData = try! Data(contentsOf: fileURL)
+        
+        self.init(data: imageData)!
+    }
+    
+}
 
 extension UIViewController : UIGestureRecognizerDelegate {
     
@@ -246,22 +287,7 @@ extension String {
     }
     
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    
-    func hexadecimal() -> Data? {
-        var data = Data(capacity: characters.count / 2)
-        
-        let regex = try! NSRegularExpression(pattern: "[0-9a-f]{1,2}", options: .caseInsensitive)
-        regex.enumerateMatches(in: self, range: NSMakeRange(0, utf16.count)) { match, flags, stop in
-            let byteString = (self as NSString).substring(with: match!.range)
-            var num = UInt8(byteString, radix: 16)!
-            data.append(&num, count: 1)
-        }
-        
-        guard data.count > 0 else { return nil }
-        
-        return data
-    }
-    
+   
     
     
 }

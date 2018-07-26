@@ -13,6 +13,19 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        let targetImage = #imageLiteral(resourceName: "kakao")
+        let imageName = "kakao"
+        
+        //save
+        let _ = targetImage.saveImageToDocuments(fileName: imageName)
+        
+        //read
+//        let afterImage = UIImage.readImageFromeDocuments(fileName: imageName)
+        let afterImage = UIImage(documentFileName: imageName)
+        
+        self.view.addSubview(UIImageView(image: afterImage))
+        
     }
 
     override func didReceiveMemoryWarning() {

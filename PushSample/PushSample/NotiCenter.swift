@@ -9,10 +9,10 @@
 import UIKit
 import UserNotifications
 
-class KJG_NotiCenter: NSObject, UNUserNotificationCenterDelegate {
+class NotiCenter: NSObject, UNUserNotificationCenterDelegate {
     
-    static let shared : KJG_NotiCenter = {
-        let sharedCenter = KJG_NotiCenter()
+    static let shared : NotiCenter = {
+        let sharedCenter = NotiCenter()
         return sharedCenter
     }()
     
@@ -28,7 +28,9 @@ class KJG_NotiCenter: NSObject, UNUserNotificationCenterDelegate {
                 }else{
                     
                     self.notiCenter.delegate = self
-                    UIApplication.shared.registerForRemoteNotifications()
+                    DispatchQueue.main.async {
+                        UIApplication.shared.registerForRemoteNotifications()
+                    }
                 }
             }
         }
@@ -42,15 +44,20 @@ class KJG_NotiCenter: NSObject, UNUserNotificationCenterDelegate {
         content.title = "title"
         content.body = "body"
         content.sound = UNNotificationSound.default()
+
+        //이미지를 추가하길 원한다면
+        let imageURL = #imageLiteral(resourceName: "kakao").saveImageToDocuments(fileName: "kakao")
+        let attachment = try! UNNotificationAttachment(identifier: "kakao", url: imageURL, options: nil)
+        content.attachments = [attachment]
         
         //원하는 시간 컴포넌트 추가
         var newTime = time
         newTime = Calendar.current.date(bySetting: .hour, value: 0, of: newTime)!
         newTime = Calendar.current.date(bySetting: .minute, value: 0, of: newTime)!
-        
+        newTime = Calendar.current.date(bySetting: .second, value: 0, of: newTime)!
+
         //해당하는 Date 객체와 어떤거가 맞을때 알람이 울릴지 결정
         let triggerDate = Calendar.current.dateComponents([.hour,.minute,.second], from: time)
-//        triggerDate.weekday
         
         //이번에는 시간으로 트리거를 정할 뿐 트리거는 여러 종류가 있다.
         //위치기반, 현재 시각 기반 등등

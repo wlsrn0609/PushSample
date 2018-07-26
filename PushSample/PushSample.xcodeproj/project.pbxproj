@@ -28,6 +28,7 @@
 		589C5AD82109B2430007561A /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		589C5AD92109B2430007561A /* Define.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Define.swift; sourceTree = "<group>"; };
 		589C5ADA2109B2430007561A /* NotiCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotiCenter.swift; sourceTree = "<group>"; };
+		589C5ADE2109B4220007561A /* PushSample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PushSample.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +61,7 @@
 		589C5AC52109B2290007561A /* PushSample */ = {
 			isa = PBXGroup;
 			children = (
+				589C5ADE2109B4220007561A /* PushSample.entitlements */,
 				589C5AC62109B2290007561A /* AppDelegate.swift */,
 				589C5AC82109B2290007561A /* ViewController.swift */,
 				589C5AD92109B2430007561A /* Define.swift */,
@@ -105,6 +107,14 @@
 				TargetAttributes = {
 					589C5AC22109B2290007561A = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -292,6 +302,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PushSample/PushSample.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CZKH475M2R;
 				INFOPLIST_FILE = PushSample/Info.plist;
@@ -310,6 +321,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PushSample/PushSample.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CZKH475M2R;
 				INFOPLIST_FILE = PushSample/Info.plist;
