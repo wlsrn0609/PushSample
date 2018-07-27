@@ -110,26 +110,31 @@ extension UIImage {
         return fileURL
     }
     
-    class func readImageFromeDocuments(fileName : String) -> UIImage{
+    class func readImageFromeDocuments(fileName : String) -> UIImage?{
         
         let documentPathURL : URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last!
         let fileName : String     = String(format: "%@.png", fileName)
         let fileURL : URL         = documentPathURL.appendingPathComponent(fileName)
         
-        let imageData = try! Data(contentsOf: fileURL)
-        
-        return UIImage(data: imageData)!
+        if let imageData = try? Data(contentsOf: fileURL) {
+            if let image = UIImage(data: imageData) {
+                return image
+            }
+        }
+        return nil
     }
     
-    convenience init(documentFileName fileName : String) {
+    convenience init?(documentFileName fileName : String) {
         
         let documentPathURL : URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last!
         let fileName : String     = String(format: "%@.png", fileName)
         let fileURL : URL         = documentPathURL.appendingPathComponent(fileName)
         
-        let imageData = try! Data(contentsOf: fileURL)
-        
-        self.init(data: imageData)!
+        if let imageData = try? Data(contentsOf: fileURL) {
+            self.init(data: imageData)
+            return
+        }
+        self.init()
     }
     
 }
