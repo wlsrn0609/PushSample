@@ -12,17 +12,22 @@ import UIKit
 
 //samplePayload
 /*
- {
- "aps" : {
- "alert" : {
- "title" : "타이틀",
- "subtitle" : "서브타이틀",
- "body" : "바디"
- },
- "mutable-content": 1
- },
- "imageURL": "https://i.ytimg.com/vi/7qkbRYM7YP8/maxresdefault.jpg"
- } */
+{
+    "aps" :
+    {
+        "alert" :
+        {
+            "title" : "타이틀",
+            "subtitle" : "서브타이틀",
+            "body" : "바디"
+        },
+        "mutable-content": 1
+    },
+    "imageURL": "https://i.ytimg.com/vi/7qkbRYM7YP8/maxresdefault.jpg"
+}
+ 
+ 
+ */
 
 class NotificationService: UNNotificationServiceExtension {
 
@@ -30,6 +35,7 @@ class NotificationService: UNNotificationServiceExtension {
     var bestAttemptContent: UNMutableNotificationContent?
 
     override func didReceive(_ request: UNNotificationRequest, withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void) {
+//        print(#function) //print를 찍으면 이 함수가 실행되지 않음 // 왜???
         self.contentHandler = contentHandler
         bestAttemptContent = (request.content.mutableCopy() as? UNMutableNotificationContent)
         
