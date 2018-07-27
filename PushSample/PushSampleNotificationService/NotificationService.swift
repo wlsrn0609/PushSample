@@ -42,6 +42,10 @@ class NotificationService: UNNotificationServiceExtension {
         if let bestAttemptContent = bestAttemptContent {
             // Modify the notification content here...
             bestAttemptContent.title = "\(bestAttemptContent.title) [modified]"
+            if let otherUrlString = bestAttemptContent.userInfo["otherURL"] as? String {
+                bestAttemptContent.body = otherUrlString
+            }
+                
             if let imageUrlString = bestAttemptContent.userInfo["imageURL"] as? String {
                 if let fileName = imageUrlString.components(separatedBy: "/").last {
                     if let imageURL = URL(string: imageUrlString) {
@@ -51,7 +55,7 @@ class NotificationService: UNNotificationServiceExtension {
                             let fileURL : URL         = documentPathURL.appendingPathComponent(fileName)
                             try? imageData.write(to: fileURL)
                             
-                            bestAttemptContent.body = fileURL.absoluteString
+//                            bestAttemptContent.body = fileURL.absoluteString
                             
                             let attachment = try! UNNotificationAttachment(identifier: "image", url: fileURL, options: nil)
                             bestAttemptContent.attachments = [attachment]
