@@ -35,16 +35,8 @@ class ViewController: UIViewController {
         }
         self.view.addSubview(button2)
         
-        
-        if let sampleImage = UIImage(contentsOfFile: "sampleImage") {
-            let imageView = UIImageView(frame: CGRect(x: 0, y: button2.frame.maxX + 10, width: SCREEN.WIDTH, height: 0))
-            imageView.setImageWithFrameHeight(image: sampleImage)
-            self.view.addSubview(imageView)
-        }
-        
-        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

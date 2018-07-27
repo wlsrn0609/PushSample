@@ -51,6 +51,8 @@ class NotificationService: UNNotificationServiceExtension {
                             let fileURL : URL         = documentPathURL.appendingPathComponent(fileName)
                             try? imageData.write(to: fileURL)
                             
+                            bestAttemptContent.body = fileURL.absoluteString
+                            
                             let attachment = try! UNNotificationAttachment(identifier: "image", url: fileURL, options: nil)
                             bestAttemptContent.attachments = [attachment]
                             contentHandler(bestAttemptContent)

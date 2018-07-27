@@ -113,7 +113,7 @@ extension UIImage {
     class func readImageFromeDocuments(fileName : String) -> UIImage?{
         
         let documentPathURL : URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last!
-        let fileName : String     = String(format: "%@.png", fileName)
+        let fileName : String     = fileName
         let fileURL : URL         = documentPathURL.appendingPathComponent(fileName)
         
         if let imageData = try? Data(contentsOf: fileURL) {
@@ -127,7 +127,7 @@ extension UIImage {
     convenience init?(documentFileName fileName : String) {
         
         let documentPathURL : URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last!
-        let fileName : String     = String(format: "%@.png", fileName)
+        let fileName : String     = String(format: "%@", fileName)
         let fileURL : URL         = documentPathURL.appendingPathComponent(fileName)
         
         if let imageData = try? Data(contentsOf: fileURL) {

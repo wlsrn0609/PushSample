@@ -122,32 +122,37 @@ class NotiCenter: NSObject, UNUserNotificationCenterDelegate {
     }
     
     
+    
+    
+    
+    
+    
+    //========================================================================//
+    //                   UNUserNotificationCenterDelegate                     //
+    //========================================================================//
+    
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Swift.Void) {
+        
+        if let _ = notification.request.trigger as? UNPushNotificationTrigger {
+            print("pushNoti")
+        }else{
+            print("Not pushNoti")
+        }
+        
+        //배너 호출
+        completionHandler([.alert,.sound])//호출을 해야 실제로 알람 등이 울린다.
+    }
+    
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Swift.Void){
+        
+        
+        //호출된 배너를 눌렀을때
+        
+        completionHandler()
+    }
 }
-
-
-
-
-//========================================================================//
-//                   UNUserNotificationCenterDelegate                     //
-//========================================================================//
-
-
-func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Swift.Void) {
-    
-    
-    //배너 호출
-    completionHandler([.alert,.sound])//호출을 해야 실제로 알람 등이 울린다.
-}
-
-
-func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Swift.Void){
-    
-    
-    //호출된 배너를 눌렀을때
-    
-    completionHandler()
-}
-
 
 
 
